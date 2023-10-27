@@ -1,13 +1,16 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import GetRoutes from 'routers/index';
+import Routes from 'routers/index';
+import Layout from 'components/Layout/Layout';
+import SuspenseWithChunkError from 'components/SuspenseWithChunkError';
+import PageLoader from 'components/Loader/PageLoader';
 const App = ()=> {
-  const element = useRoutes(GetRoutes);
+  const element = useRoutes(Routes);
   return (
-    <div className="App">
+    <SuspenseWithChunkError fallback={<PageLoader />} >
       { element}
-    </div>
+    </SuspenseWithChunkError>
   );
 }
 
-export default App;
+export default React.memo(App);
