@@ -2,7 +2,7 @@ import React from 'react'
 
 function kanban() {
   return (
-    <div>kanban</div>
+    <div className='flex-1'>kanban</div>
   )
 }
 

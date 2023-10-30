@@ -2,7 +2,7 @@ import React from 'react'
 
 function epic() {
   return (
-    <div>epic</div>
+    <div className='flex-1'>epic </div>
   )
 }
 

@@ -9,3 +9,4 @@ export const Header = styled.header`
   height: 60px;
   border-bottom:1px solid rgb(231, 227, 235);
 `
+
