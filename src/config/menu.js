@@ -1,10 +1,10 @@
 export default [
   {
-    label:'项目',
-    href:'/project'
+    label: "项目",
+    href: "/project",
   },
   {
-    label:'成员',
-    href:''
-  }
-]
+    label: "成员",
+    href: "",
+  },
+];

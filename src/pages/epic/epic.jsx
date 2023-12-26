@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function epic() {
-  return (
-    <div className='flex-1'>epic </div>
-  )
+  return <div className="flex-1">epic </div>;
 }
 
-export default epic
+export default epic;

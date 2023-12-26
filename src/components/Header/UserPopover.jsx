@@ -1,12 +1,11 @@
-import { List, Popover,Typography } from 'antd'
-import React from 'react'
+import { List, Popover, Typography } from "antd";
+import React from "react";
 
-function UserPopover({children}) {
-
+function UserPopover({ children }) {
   const content = (
     <div>
-      <Typography.Text type='secondary'>组员列表</Typography.Text>
-      <List size='small'>
+      <Typography.Text type="secondary">组员列表</Typography.Text>
+      <List size="small">
         <List.Item>
           <p>组员1</p>
         </List.Item>
@@ -15,13 +14,13 @@ function UserPopover({children}) {
         </List.Item>
       </List>
     </div>
-  )
+  );
 
   return (
     <Popover placement="bottom" content={content}>
       {children}
     </Popover>
-  )
+  );
 }
 
-export default UserPopover
+export default UserPopover;
