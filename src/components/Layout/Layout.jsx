@@ -10,7 +10,7 @@ function Layout({ children }) {
       <Header />
       <main className="flex bg-slate-50 h-screen">
         {location.pathname !== "/project" && <SideBar />}
-        <div className=" w-full p-4 ">
+        <div className=" w-full p-4 h-full">
           <Outlet />
         </div>
       </main>

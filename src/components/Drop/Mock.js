@@ -1,6 +1,6 @@
 export const drag_data = [
   {
-    kanban_key: "a1111",
+    kanban_key: "需求评审",
     task: [
       {
         name: "task1",
@@ -23,7 +23,7 @@ export const drag_data = [
     ],
   },
   {
-    kanban_key: "b2222",
+    kanban_key: "开发",
     task: [
       {
         name: "task4",
