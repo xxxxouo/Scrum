@@ -18,7 +18,7 @@ function Menu() {
       : "leading-3rem px-6 ";
   };
 
-  const renderComponent = (route) => {
+  const renderComponent = route => {
     const commonNav = (
       <NavLink className={classN} to={route.href}>
         {route.label}
@@ -35,7 +35,7 @@ function Menu() {
 
   return (
     <div className="flex items-center">
-      {menu.map((route) => (
+      {menu.map(route => (
         <NavHover key={route.href} className=" text-lg py-2">
           {renderComponent(route)}
         </NavHover>

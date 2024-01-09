@@ -1,12 +1,27 @@
 import { Space, Table } from "antd";
 import React from "react";
+import { useProject_List } from "state/project/hooks";
+import { Link } from "react-router-dom";
+import { Star } from "react-feather";
+
 const columns = [
   {
     title: "收藏",
     dataIndex: "collect",
     key: "collect",
     align: "center",
-    render: (text, record) => <div></div>,
+    render: (text, record) => {
+      return (
+        <div
+          onClick={() => {
+            // hand_collect_click(record)
+          }}
+          className="flex justify-center"
+        >
+          <Star color={text ? "#dfd50c" : "#999999"} />
+        </div>
+      );
+    },
     width: 100,
   },
   {
@@ -14,10 +29,10 @@ const columns = [
     dataIndex: "name",
     key: "name",
     align: "center",
-    render: (text) => (
-      <a href="#" style={{ color: "#0052cc" }}>
+    render: (text, record) => (
+      <Link to={`/project/${record._id}/kanban`} style={{ color: "#0052cc" }}>
         {text}
-      </a>
+      </Link>
     ),
     sorter: (a, b) => a.title - b.title,
     width: 300,
@@ -34,7 +49,7 @@ const columns = [
     dataIndex: "owner",
     key: "owner",
     align: "center",
-    render: (text) => <div>{text}</div>,
+    render: text => <div>{text}</div>,
     width: 150,
   },
   {
@@ -47,24 +62,15 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    collect: false,
-    name: "洁神的第三个项目",
-    organization: "研发组",
-    owner: "洁神",
-    created: "2023-10-30",
-  },
-];
-
-function index() {
+function ProjectTable() {
+  const data = useProject_List();
   return (
     <Table
       dataSource={data}
       columns={columns}
-      rowKey={(record) => record.created}
+      rowKey={record => record.created}
     />
   );
 }
 
-export default index;
+export default ProjectTable;

@@ -20,7 +20,7 @@ const menuConfig = [
 function index() {
   const navigate = useNavigate();
   const location = useLocation();
-  const handleClick = (e) => {
+  const handleClick = e => {
     const { key } = e;
     navigate(`/project/1/${key}`);
   };

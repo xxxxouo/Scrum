@@ -1,9 +1,12 @@
 import React from "react";
-import ProjectTable from "components/ProjectTable";
-import CreateProductModal from "components/CreateProductModal";
+import ProjectTable from "./components/ProjectTable";
+import CreateProductModal from "./components/CreateProductModal";
 import { Typography, Button, Input, Select } from "antd";
+import { useGetProject } from "./hooks/useInitData";
+
 function project() {
-  const handleChange = (value) => console.log(`selected ${value}`);
+  useGetProject();
+  const handleChange = value => console.log(`selected ${value}`);
 
   const handleCreate = () => {
     console.log("create");

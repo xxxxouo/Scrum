@@ -1,17 +1,30 @@
 import React, { useEffect, useRef } from "react";
 import { Button, Checkbox, Form, Input, Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login_wrap from "components/Layout/Login_wrap";
+import request from "utils/http";
+import { message } from "antd";
 
 export default function register() {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     const then = await form.validateFields();
     if (then) {
-      console.log(then);
+      const { code, msg } = await request.post("/api/register", then);
+      if (code == 0) {
+        message.success("注册成功,2秒后为您跳转到登陆界面");
+        setTimeout(() => {
+          navigate("/login", {
+            replace: true,
+            state: { username: then.username, password: then.password },
+          });
+        }, 2000);
+      }
     }
   };
+
   return (
     <Login_wrap>
       <Form form={form} className="flex justify-center items-center flex-col">

@@ -1,0 +1,7 @@
+{
+  "tabWidth": 2,
+  "semicolon": true,
+  "arrowParens": "avoid",
+  "jsxquote": true,
+  "singleQuote": false
+}

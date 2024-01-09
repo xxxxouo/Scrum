@@ -1,15 +1,27 @@
 import React, { useEffect, useRef } from "react";
 import { Button, Checkbox, Form, Input, Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Login_wrap from "components/Layout/Login_wrap";
+import request from "utils/http";
+import { message } from "antd";
+import _ from "lodash";
 
 export default function login() {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const location = useLocation();
+  _.isEmpty(location.state) ? null : form.setFieldsValue(location.state);
 
   const handleClick = async () => {
     const then = await form.validateFields();
     if (then) {
-      console.log(then);
+      const { code, msg } = await request.post("/api/login", then);
+      if (code == 0) {
+        message.success("登陆成功");
+        navigate("/project", {
+          replace: true,
+        });
+      }
     }
   };
   return (
