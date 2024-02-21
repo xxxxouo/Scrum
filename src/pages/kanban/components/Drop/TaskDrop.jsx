@@ -77,6 +77,14 @@ function TaskDrop({ task }) {
                         {item.type}
                       </Tag>
                     </div>
+                    {item.epic && (
+                      <div className="flex justify-between">
+                        <div> 任务组:</div>
+                        <Tag color="purple" bordered={false}>
+                          {item.epic}
+                        </Tag>
+                      </div>
+                    )}
                   </div>
                 </Drag_Box>
               )}

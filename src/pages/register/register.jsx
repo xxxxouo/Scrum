@@ -59,6 +59,9 @@ export default function register() {
         <Link className="text-blue-600" to={"/login"}>
           已有账号?请登录
         </Link>
+        <Link className="text-blue-600 mt-3" to={"/vip"}>
+          进入vip 页面
+        </Link>
       </Form>
     </Login_wrap>
   );

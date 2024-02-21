@@ -9,3 +9,9 @@ export const useSelectOrg = () =>
 
 export const useSelectTaskTypes = () =>
   useSelector(state => state.project.task_types);
+
+export const useSelectCreateProjectModel = () =>
+  useSelector(state => state.project.project_model.show);
+
+export const useSelectProjectModelData = () =>
+  useSelector(state => state.project.project_model);

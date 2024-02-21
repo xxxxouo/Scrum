@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Menu } from "antd";
 function getItem(label, key, icon, children, type) {
   return {
@@ -17,17 +17,28 @@ const menuConfig = [
   },
   getItem("任务组", "epic", null, "", "item"),
 ];
-function index() {
+function Index() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [current, setCurrent] = useState("kanban");
+
   const handleClick = e => {
     const { key } = e;
-    navigate(`/project/1/${key}`);
+    setCurrent(key);
+    navigate(`/project/${id}/${key}`);
   };
+
   const defaultSelectedKeys = useMemo(() => {
     const pathArr = location.pathname.split("/");
     return [pathArr[pathArr.length - 1]];
   }, []);
+
+  useEffect(() => {
+    const pathArr = location.pathname.split("/");
+    setCurrent(pathArr[pathArr.length - 1]);
+  }, [location.pathname]);
+
   return (
     <Menu
       style={{
@@ -36,10 +47,11 @@ function index() {
       }}
       mode="inline"
       onClick={handleClick}
+      selectedKeys={[current]}
       defaultSelectedKeys={defaultSelectedKeys}
       items={menuConfig}
     />
   );
 }
 
-export default index;
+export default Index;

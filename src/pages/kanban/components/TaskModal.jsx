@@ -8,20 +8,26 @@ import {
   update_task,
   drop_update_async,
 } from "state/drop/reducer";
-import { useGetTaskModalStatus } from "state/kanban/hooks";
+import { useGetEpicList, useGetTaskModalStatus } from "state/kanban/hooks";
 import { set_task_modal } from "state/kanban/reducer";
 import { useSelectUsers, useSelectTaskTypes } from "state/project/hooks";
 import "./style/index.css";
 export default function TaskModal() {
   const users = useSelectUsers();
   const taskType = useSelectTaskTypes();
+  const epicInit = useGetEpicList();
+  const epic = epicInit?.map(item => {
+    return {
+      type: item,
+      name: item,
+    };
+  });
   const dispatch = useDispatch();
   const kanban_data = useKanban_dataState();
   const { show, kanban_key, task_id, type, comfirm_loading } =
     useGetTaskModalStatus();
   const [form] = Form.useForm();
   const handleOk = async () => {
-    console.log(kanban_key, "kanban_key");
     try {
       const form_data = await form.validateFields();
       if (type == "create") {
@@ -44,9 +50,9 @@ export default function TaskModal() {
         );
       }
       dispatch(drop_update_async());
-    } catch (error) {
-    } finally {
       handleCancel();
+    } catch (error) {
+      // console.log("error", error);
     }
   };
 
@@ -146,6 +152,12 @@ export default function TaskModal() {
           <Select
             options={users}
             fieldNames={{ label: "username", value: "username" }}
+          />
+        </Form.Item>
+        <Form.Item label="任务组" name="epic">
+          <Select
+            options={epic}
+            fieldNames={{ label: "type", value: "name" }}
           />
         </Form.Item>
       </Form>

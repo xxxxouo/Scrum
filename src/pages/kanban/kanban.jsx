@@ -7,7 +7,7 @@ import { set_project_id } from "state/drop/reducer";
 import { useDispatch } from "react-redux";
 import TaskModal from "./components/TaskModal";
 
-function kanban() {
+function Kanban() {
   const { id } = useParams();
   const dispath = useDispatch();
 
@@ -28,4 +28,4 @@ function kanban() {
   );
 }
 
-export default kanban;
+export default Kanban;

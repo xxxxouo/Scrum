@@ -1,15 +1,17 @@
 import React from "react";
 import ProjectTable from "./components/ProjectTable";
-import CreateProductModal from "./components/CreateProductModal";
+import ProductModal from "./components/ProductModal";
 import { Typography, Button, Input, Select } from "antd";
 import { useGetProject } from "./hooks/useInitData";
-
+import { useDispatch } from "react-redux";
+import { set_create_project_model_show } from "state/project/reducer";
 function project() {
   useGetProject();
+  const dispath = useDispatch();
   const handleChange = value => console.log(`selected ${value}`);
 
   const handleCreate = () => {
-    console.log("create");
+    dispath(set_create_project_model_show({ show: true, type: "create" }));
   };
 
   return (
@@ -20,7 +22,7 @@ function project() {
           创建项目
         </Button>
       </div>
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         <Input
           placeholder="任务名"
           style={{
@@ -53,9 +55,9 @@ function project() {
             },
           ]}
         />
-      </div>
+      </div> */}
       <ProjectTable />
-      <CreateProductModal />
+      <ProductModal />
     </>
   );
 }

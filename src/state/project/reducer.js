@@ -10,6 +10,7 @@ const initialState = {
   users: [],
   organization: [],
   task_types: [],
+  project_model: {},
 };
 
 export const getProjectListAsync = createAsyncThunk(
@@ -57,7 +58,23 @@ export const getTaskTypesAsync = createAsyncThunk(
 const projectSlice = createSlice({
   name: "project",
   initialState,
-  reducers: {},
+  reducers: {
+    set_create_project_model_show(state, action) {
+      const { show, data, type } = action.payload;
+      state.project_model.show = show;
+      state.project_model.type = type;
+      if (type === "edit") {
+        state.project_model.data = {
+          name: data.name,
+          organization: data.organization,
+          owner: data.owner,
+          id: data._id,
+        };
+      } else {
+        state.project_model.data = {};
+      }
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getProjectListAsync.pending, state => {
@@ -83,5 +100,5 @@ const projectSlice = createSlice({
       });
   },
 });
-export const {} = projectSlice.actions;
+export const { set_create_project_model_show } = projectSlice.actions;
 export default projectSlice.reducer;

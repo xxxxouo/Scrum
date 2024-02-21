@@ -8,3 +8,6 @@ export const useGetTaskModalStatus = () =>
 
 export const useGetTaskModalShow = () =>
   useSelector(state => state.kanban.task_modal_status.show);
+
+export const useGetEpicList = () =>
+  useSelector(state => state.kanban.current_project.epic);

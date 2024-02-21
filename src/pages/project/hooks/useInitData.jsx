@@ -7,7 +7,6 @@ export const useGetProject = () => {
 
   useEffect(() => {
     const list = dispath(getProjectListAsync());
-    console.log(list);
   }, []);
   return null;
 };
