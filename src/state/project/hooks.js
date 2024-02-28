@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, shallowEqual } from "react-redux";
 
-export const useProject_List = () => useSelector(state => state.project.list);
+export const useProject_List = () => useSelector(state => state.project.list, shallowEqual);
 
 export const useSelectUsers = () => useSelector(state => state.project.users);
 

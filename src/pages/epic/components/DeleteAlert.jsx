@@ -13,7 +13,6 @@ export default function DeleteAlert({ item }) {
     await axios.delete(`/api/epic/${id}`, {
       epic_name: item,
     });
-
     dispath(getSingle_Project_Async(id));
   };
 

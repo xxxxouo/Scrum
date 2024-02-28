@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import { Divider, Input, Popconfirm } from "antd";
 import styled from "styled-components";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -51,7 +51,34 @@ export function Drag_Wrap({ children }) {
 
 function DropCp() {
   const dispath = useDispatch();
+  // const [drag_data, set_drag_data] = useState([])
+  // 降低优先级 采用fiber的并发更新  拆分task
+  // const [ isPending, startTransition ] = useTransition();
   const drag_data = useKanban_dataState();
+
+  // 开启假设性原则
+  // useEffect(() => {
+  //     startTransition(() => {
+  //       let data = []
+  //       for (let i = 0; i < 100; i++) {
+  //           let task = []
+
+  //           for (let j = 0; j < 30; j++) {
+  //               task.push({
+  //                   name: `${i}_${j}`,
+
+  //                   owner: `${i}_${j}`,
+  //                   type: 'bug'
+  //               })
+  //           }
+  //           data.push({
+  //               kanban_key: `${i}`,
+  //               task
+  //           })
+  //       }
+  //       set_drag_data(data)
+  //     })
+  // }, [])
   const onDragEnd = result => {
     if (!result.destination) return; // 拖到屏幕外
     if (result.type === "kanban") {
@@ -149,4 +176,4 @@ function DropCp() {
   );
 }
 
-export default DropCp;
+export default React.memo(DropCp) ;

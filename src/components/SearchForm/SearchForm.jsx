@@ -67,9 +67,7 @@ function SearchForm() {
   const search_click = async () => {
     const form_params = await form.validateFields();
     Object.keys(form_params).forEach(key => {
-      if (form_params[key] === undefined) {
-        delete form_params[key];
-      }
+      if (form_params[key] === undefined) delete form_params[key];
     });
     if (form_params) await search(form_params);
   };

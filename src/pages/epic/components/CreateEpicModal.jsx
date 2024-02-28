@@ -23,7 +23,7 @@ function CreateEpicModal() {
       const form_data = await form.validateFields();
       if (form_data) {
         const { epic_name } = form_data;
-        const res = await axios.post(`/api/epic/${id}`, {
+         await axios.post(`/api/epic/${id}`, {
           epic_name,
         });
         handleCancel();

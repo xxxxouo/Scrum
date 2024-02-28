@@ -8,6 +8,7 @@ import useMessage from "hooks/useMessage";
 import useGlobal from "hooks/useGlobal";
 import useGoLogin from "hooks/useGoLogin";
 const App = () => {
+  console.log('app render');
   const element = useRoutes(Routes);
   const contextHolder = useNotification();
   const messageHolder = useMessage();
@@ -23,4 +24,4 @@ const App = () => {
   );
 };
 
-export default React.memo(App);
+export default App;

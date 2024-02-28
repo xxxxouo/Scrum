@@ -31,6 +31,7 @@ export const getSingle_Project_Async = createAsyncThunk(
     });
     state.dispatch(set_kanban_data(kanban));
     state.dispatch(set_current_project(response.data));
+    return kanban
   },
 );
 

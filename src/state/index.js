@@ -17,7 +17,7 @@ const reducer = {
 const state = configureStore({
   reducer,
   devTools: process.env.NODE_ENV !== "production",
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+  // middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
 });
 
 export default state;
