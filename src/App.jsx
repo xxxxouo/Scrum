@@ -8,13 +8,11 @@ import useMessage from "hooks/useMessage";
 import useGlobal from "hooks/useGlobal";
 import useGoLogin from "hooks/useGoLogin";
 const App = () => {
-  console.log('app render');
   const element = useRoutes(Routes);
   const contextHolder = useNotification();
   const messageHolder = useMessage();
   useGlobal();
   useGoLogin();
-
   return (
     <SuspenseWithChunkError fallback={<PageLoader />}>
       {contextHolder}

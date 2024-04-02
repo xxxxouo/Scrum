@@ -7,8 +7,14 @@ const Register = lazy(() => import("pages/register/register"));
 const Project = lazy(() => import("pages/project/project"));
 const Kanban = lazy(() => import("pages/kanban/kanban"));
 const Epic = lazy(() => import("pages/epic/epic"));
-const Vip = lazy(() => import("pages/vip"));
-
+const Vip = lazy(() => import("pages/vip")); 
+// import Layout from 'components/Layout/Layout'
+// import Login from 'pages/login/login'
+// import Register from 'pages/register/register'
+// import Project from 'pages/project/project'
+// import Kanban from 'pages/kanban/kanban'
+// import Epic from "pages/epic/epic";
+// import Vip from 'pages/vip'
 // 登陆拦截
 const PrivateRoute = ({ element, path }) => {
   const islogin = useSelectLogin();
