@@ -1,20 +1,20 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelectLogin } from "state/login/hooks";
-const Layout = lazy(() => import("components/Layout/Layout"));
-const Login = lazy(() => import("pages/login/login"));
-const Register = lazy(() => import("pages/register/register"));
-const Project = lazy(() => import("pages/project/project"));
-const Kanban = lazy(() => import("pages/kanban/kanban"));
-const Epic = lazy(() => import("pages/epic/epic"));
-const Vip = lazy(() => import("pages/vip")); 
-// import Layout from 'components/Layout/Layout'
-// import Login from 'pages/login/login'
-// import Register from 'pages/register/register'
-// import Project from 'pages/project/project'
+// const Layout =  import("components/Layout/Layout"));
+// const Login = lazy(() => import("pages/login/login"));
+// const Register = lazy(() => import("pages/register/register"));
+// const Project = lazy(() => import("pages/project/project"));
+const Kanban = lazy(() => import(/* webpackChunkName:"kanban" */ "pages/kanban/kanban"));
+// const Epic = lazy(() => import("pages/epic/epic"));
+// const Vip = lazy(() => import("pages/vip")); 
+import Layout from 'components/Layout/Layout'
+import Login from 'pages/login/login'
+import Register from 'pages/register/register'
+import Project from 'pages/project/project'
 // import Kanban from 'pages/kanban/kanban'
-// import Epic from "pages/epic/epic";
-// import Vip from 'pages/vip'
+import Epic from "pages/epic/epic";
+import Vip from 'pages/vip'
 // 登陆拦截
 const PrivateRoute = ({ element, path }) => {
   const islogin = useSelectLogin();
@@ -55,4 +55,8 @@ export default [
       },
     ],
   },
+  {
+    path: "*",
+    element: <Navigate to={"/project"} replace />,
+  }
 ];

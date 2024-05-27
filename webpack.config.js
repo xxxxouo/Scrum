@@ -6,13 +6,32 @@ module.exports = {
   entry:'./src/index',
   output: {
     clean:true,
+    filename: "[name].[contenthash].js",
+    chunkFilename:"[name].[contenthash].js",
     path: path.resolve(__dirname, 'dist'),
   },
   resolve:{
-    extensions: ['.js', '.json', '.wasm', '.mjs', '.jsx'], //省略后缀名
+    extensions: ['.js', '.json', '.wasm', '.mjs', '.jsx','cjs'], //省略后缀名
     modules: [path.resolve(__dirname, 'src'), 'node_modules'], // 这个可以直接写src目录下的文件名，不用写相对路径
   },
   mode: 'production',
+  optimization:{
+    runtimeChunk: true, 
+    // 打包优化 代码分割 按需加载  把常用的库单独打包 
+    splitChunks:{
+      cacheGroups:{
+        vendor: {
+          priority: 1, // 优先级
+
+          test: /node_modules/,
+          name: 'vendors',
+          chunks: 'all',
+          minSize: 0,
+          minChunks: 1
+        }
+      }
+    }
+  },
   plugins:[ 
     new HtmlWebpackPlugin({
       template: './public/index.html'
